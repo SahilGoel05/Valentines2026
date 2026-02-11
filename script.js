@@ -22,8 +22,8 @@ function handleYes() {
     // Hide the rejection counter
     counterEl.style.display = 'none';
     // Show rejection note
-    document.getElementById('rejection-note').textContent =
-        `Rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} tho????`;
+    document.getElementById('rejection-note').innerHTML =
+        `Rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} tho???? <img src="images/rejection.jpg" alt="" class="celebration-inline-img">`;
 }
 
 function handleNo() {
@@ -256,7 +256,7 @@ function startLoadingBar() {
         bar.style.width = '0%';
         percent.textContent = '💔';
         title.textContent = 'Just kidding.';
-        msg.textContent = 'Try again.';
+        msg.innerHTML = 'Try again. <img src="images/rejection.jpg" alt="" class="loading-inline-img">';
     }, totalDelay + 2000);
 
     // Transition to Phase 4

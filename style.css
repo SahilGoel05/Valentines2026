@@ -320,6 +320,16 @@ h2 {
     min-height: 1.5em;
 }
 
+.loading-inline-img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+}
+
 /* === Phase 4: Error Modal === */
 .modal-overlay {
     display: none;
