@@ -110,7 +110,6 @@ const captchaImages = [
     { src: 'images/decoy1.jpg', correct: false, label: 'Decoy 1' },
     { src: 'images/decoy2.jpg', correct: false, label: 'Decoy 2' },
     { src: 'images/decoy3.jpg', correct: false, label: 'Decoy 3' },
-    { src: 'images/decoy4.jpg', correct: false, label: 'Decoy 4' },
 ];
 
 let selectedCaptcha = new Set();
