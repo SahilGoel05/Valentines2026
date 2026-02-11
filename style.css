@@ -287,3 +287,92 @@ h2 {
     color: #4A3040;
     min-height: 1.5em;
 }
+
+/* === Phase 4: Error Modal === */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 48, 64, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 320px;
+    width: 85%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    animation: modalSlideIn 0.4s ease;
+}
+
+@keyframes modalSlideIn {
+    0% {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-box h3 {
+    font-family: 'Fredoka', sans-serif;
+    color: #E8456B;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.modal-error {
+    font-size: 0.95rem;
+    color: #4A3040;
+    margin-bottom: 0.5rem;
+}
+
+.modal-suggestion {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FF6B8A;
+    margin-bottom: 1.5rem;
+}
+
+.modal-dismiss {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6rem 2rem;
+    border-radius: 25px;
+    border: none;
+    background-color: #FF6B8A;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-dismiss:hover {
+    background-color: #E8456B;
+    transform: scale(1.05);
+}

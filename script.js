@@ -45,9 +45,34 @@ function handlePhase1No() {
     }
 }
 
-// === Phase 4 Logic (stub for now) ===
+// === Phase 4: Error Modal + Button Scaling ===
+let noScale = 1.0;
+let yesScale = 1.0;
+
 function handlePhase4No() {
-    // Will be implemented in Task 4
+    rejectionCount++;
+    updateCounter();
+    showErrorModal();
+}
+
+function showErrorModal() {
+    const modal = document.getElementById('error-modal');
+    modal.classList.add('show');
+}
+
+function dismissModal() {
+    const modal = document.getElementById('error-modal');
+    modal.classList.remove('show');
+
+    // Shrink No, grow Yes
+    noScale = Math.max(0.2, noScale - 0.1);
+    yesScale += 0.1;
+
+    const btnNo = document.getElementById('btn-no');
+    const btnYes = document.getElementById('btn-yes');
+
+    btnNo.style.transform = `scale(${noScale})`;
+    btnYes.style.transform = `scale(${yesScale})`;
 }
 
 // === Utilities ===
