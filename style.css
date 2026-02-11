@@ -57,6 +57,25 @@ h2 {
     min-height: 1.5em;
 }
 
+.hero-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(255, 107, 138, 0.3);
+}
+
+.celebration-inline-img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
 /* === Buttons === */
 .buttons {
     display: flex;

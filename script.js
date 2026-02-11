@@ -7,8 +7,6 @@ const guiltMessages = [
     "Are you suuuure? 🥺",
     "But I already started planning...",
     "I was gonna wear the nice outfit...",
-    "I told people I had the best girlfriend...",
-    "Okay wait. This feels illegal."
 ];
 
 // === DOM References ===
@@ -25,7 +23,7 @@ function handleYes() {
     counterEl.style.display = 'none';
     // Show rejection note
     document.getElementById('rejection-note').textContent =
-        `You rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} though... Not cool 😤`;
+        `Rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} tho????`;
 }
 
 function handleNo() {
@@ -41,11 +39,11 @@ function handlePhase1No() {
     rejectionCount++;
     updateCounter();
 
-    if (rejectionCount <= 5) {
+    if (rejectionCount <= 3) {
         subtitleEl.textContent = guiltMessages[rejectionCount - 1];
     }
 
-    if (rejectionCount === 5) {
+    if (rejectionCount === 3) {
         setTimeout(() => {
             phase = 2;
             showPhase('captcha');
@@ -86,6 +84,7 @@ function dismissModal() {
 // === Utilities ===
 function updateCounter() {
     counterEl.textContent = `Rejection Attempts: ${rejectionCount} 😔`;
+    counterEl.style.display = '';
 }
 
 function showPhase(phaseName) {
@@ -180,7 +179,7 @@ function submitCaptcha() {
 
     if (allCorrectSelected && !anyWrongSelected) {
         // Correct!
-        msgEl.textContent = 'Verifying emotional damage...';
+        msgEl.textContent = 'Finally!!!!';
         msgEl.style.color = '#FF6B8A';
         setTimeout(() => {
             phase = 3;
@@ -190,7 +189,7 @@ function submitCaptcha() {
     } else {
         // Wrong — shake and reset
         grid.classList.add('shake');
-        msgEl.textContent = "Hmm... that's suspicious 🤨 try again.";
+        msgEl.textContent = "Open your eyes dumbass. Try again.";
         setTimeout(() => {
             grid.classList.remove('shake');
             // Reset selections
@@ -203,7 +202,7 @@ function submitCaptcha() {
 function captchaNo() {
     rejectionCount++;
     updateCounter();
-    showToast('Nice try. Finish the captcha first. 😏');
+    showToast('Nice try. Finish the captcha first.');
 }
 
 function showToast(message) {
