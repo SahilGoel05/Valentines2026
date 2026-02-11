@@ -59,8 +59,128 @@ function showPhase(phaseName) {
     document.querySelectorAll('.phase').forEach(el => {
         el.classList.remove('active');
     });
+
+    if (phaseName === 'captcha') {
+        buildCaptchaGrid();
+    }
+
     const target = document.getElementById(`phase-${phaseName}`);
     if (target) {
         target.classList.add('active');
     }
+}
+
+// === Phase 2: Captcha ===
+const captchaImages = [
+    { src: 'images/memory1.jpg', correct: true, label: 'Memory 1' },
+    { src: 'images/memory2.jpg', correct: true, label: 'Memory 2' },
+    { src: 'images/memory3.jpg', correct: true, label: 'Memory 3' },
+    { src: 'images/decoy1.jpg', correct: false, label: 'Decoy 1' },
+    { src: 'images/decoy2.jpg', correct: false, label: 'Decoy 2' },
+    { src: 'images/decoy3.jpg', correct: false, label: 'Decoy 3' },
+];
+
+let selectedCaptcha = new Set();
+
+function buildCaptchaGrid() {
+    const grid = document.getElementById('captcha-grid');
+    grid.innerHTML = '';
+    selectedCaptcha.clear();
+
+    // Shuffle images
+    const shuffled = [...captchaImages].sort(() => Math.random() - 0.5);
+
+    shuffled.forEach((img, index) => {
+        const item = document.createElement('div');
+        item.className = 'captcha-item';
+        item.dataset.index = index;
+        item.dataset.correct = img.correct;
+
+        // Use placeholder colored boxes since images aren't ready yet
+        // When real images exist, this will show them
+        const imgEl = document.createElement('img');
+        imgEl.src = img.src;
+        imgEl.alt = img.label;
+        imgEl.onerror = function () {
+            // Fallback: show label text if image doesn't load
+            this.style.display = 'none';
+            const fallback = document.createElement('span');
+            fallback.textContent = img.label;
+            fallback.style.fontSize = '0.75rem';
+            fallback.style.padding = '0.5rem';
+            fallback.style.textAlign = 'center';
+            item.appendChild(fallback);
+        };
+        item.appendChild(imgEl);
+
+        item.addEventListener('click', () => toggleCaptchaItem(item));
+        grid.appendChild(item);
+    });
+}
+
+function toggleCaptchaItem(item) {
+    item.classList.toggle('selected');
+    const idx = item.dataset.index;
+    if (selectedCaptcha.has(idx)) {
+        selectedCaptcha.delete(idx);
+    } else {
+        selectedCaptcha.add(idx);
+    }
+}
+
+function submitCaptcha() {
+    const grid = document.getElementById('captcha-grid');
+    const items = grid.querySelectorAll('.captcha-item');
+    const msgEl = document.getElementById('captcha-message');
+
+    // Check if exactly the correct items are selected
+    let allCorrectSelected = true;
+    let anyWrongSelected = false;
+
+    items.forEach(item => {
+        const isCorrect = item.dataset.correct === 'true';
+        const isSelected = item.classList.contains('selected');
+
+        if (isCorrect && !isSelected) allCorrectSelected = false;
+        if (!isCorrect && isSelected) anyWrongSelected = true;
+    });
+
+    if (allCorrectSelected && !anyWrongSelected) {
+        // Correct!
+        msgEl.textContent = 'Verifying emotional damage...';
+        msgEl.style.color = '#FF6B8A';
+        setTimeout(() => {
+            phase = 3;
+            showPhase('loading');
+            startLoadingBar();
+        }, 2000);
+    } else {
+        // Wrong — shake and reset
+        grid.classList.add('shake');
+        msgEl.textContent = "Hmm... that's suspicious 🤨 try again.";
+        setTimeout(() => {
+            grid.classList.remove('shake');
+            // Reset selections
+            items.forEach(item => item.classList.remove('selected'));
+            selectedCaptcha.clear();
+        }, 500);
+    }
+}
+
+function captchaNo() {
+    rejectionCount++;
+    updateCounter();
+    showToast('Nice try. Finish the captcha first. 😏');
+}
+
+function showToast(message) {
+    let toast = document.querySelector('.toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
 }

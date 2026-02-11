@@ -21,7 +21,17 @@
             </div>
         </div>
 
-        <!-- Phase 2: Captcha (added in Task 2) -->
+        <!-- Phase 2: Captcha -->
+        <div id="phase-captcha" class="phase">
+            <h2>🤨 Security Verification</h2>
+            <p class="captcha-prompt">To confirm you really want to say no, select all images that represent our love.</p>
+            <div id="captcha-grid"></div>
+            <p id="captcha-message"></p>
+            <div class="buttons">
+                <button id="btn-submit-captcha" onclick="submitCaptcha()">Submit</button>
+                <button id="btn-no-captcha" onclick="captchaNo()">No</button>
+            </div>
+        </div>
 
         <!-- Phase 3: Loading (added in Task 3) -->
 
