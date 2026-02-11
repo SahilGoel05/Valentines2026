@@ -184,3 +184,53 @@ function showToast(message) {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
+
+// === Phase 3: Fake Loading Bar ===
+function startLoadingBar() {
+    const bar = document.getElementById('progress-bar');
+    const percent = document.getElementById('loading-percent');
+    const msg = document.getElementById('loading-message');
+    const title = document.getElementById('loading-title');
+
+    bar.style.width = '0%';
+    percent.textContent = '0%';
+    msg.textContent = '';
+    title.textContent = 'Processing your response...';
+
+    const steps = [
+        { width: 40, delay: 1000, text: 'Analyzing feelings...' },
+        { width: 82, delay: 1500, text: 'Consulting the heart committee...' },
+        { width: 99, delay: 2000, text: 'Almost done...' },
+    ];
+
+    let totalDelay = 500; // initial pause
+
+    steps.forEach(step => {
+        setTimeout(() => {
+            bar.style.width = step.width + '%';
+            percent.textContent = step.width + '%';
+            msg.textContent = step.text;
+        }, totalDelay);
+        totalDelay += step.delay;
+    });
+
+    // Dramatic pause at 99%
+    setTimeout(() => {
+        msg.textContent = '...';
+    }, totalDelay);
+
+    // "Just kidding" reveal
+    setTimeout(() => {
+        bar.style.width = '0%';
+        percent.textContent = '💔';
+        title.textContent = 'Just kidding.';
+        msg.textContent = 'Try again. 😏';
+    }, totalDelay + 2000);
+
+    // Transition to Phase 4
+    setTimeout(() => {
+        phase = 4;
+        subtitleEl.textContent = '💖';
+        showPhase('question');
+    }, totalDelay + 4000);
+}
