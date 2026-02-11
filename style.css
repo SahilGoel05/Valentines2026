@@ -58,8 +58,8 @@ h2 {
 }
 
 .hero-image {
-    width: 180px;
-    height: 180px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 15px rgba(255, 107, 138, 0.3);
