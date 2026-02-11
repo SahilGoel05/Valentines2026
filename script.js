@@ -17,7 +17,12 @@ const subtitleEl = document.getElementById('subtitle');
 
 // === Core Handlers ===
 function handleYes() {
+    phase = 5;
     showPhase('celebration');
+    startConfetti();
+    startFloatingHearts();
+    // Hide the rejection counter
+    counterEl.style.display = 'none';
 }
 
 function handleNo() {
@@ -258,4 +263,86 @@ function startLoadingBar() {
         subtitleEl.textContent = '💖';
         showPhase('question');
     }, totalDelay + 4000);
+}
+
+// === Phase 5: Confetti ===
+function startConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiColors = ['#FF6B8A', '#FF8FA3', '#FFB6C8', '#FFF', '#FFD700', '#E8456B'];
+    const pieces = [];
+
+    for (let i = 0; i < 150; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            w: Math.random() * 10 + 5,
+            h: Math.random() * 6 + 3,
+            color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 8,
+            speedY: Math.random() * 3 + 2,
+            speedX: (Math.random() - 0.5) * 2,
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        pieces.forEach(p => {
+            p.y += p.speedY;
+            p.x += p.speedX;
+            p.rotation += p.rotationSpeed;
+
+            if (p.y > canvas.height) {
+                p.y = -10;
+                p.x = Math.random() * canvas.width;
+            }
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// === Phase 5: Floating Hearts ===
+function startFloatingHearts() {
+    const container = document.getElementById('floating-hearts');
+    const hearts = ['💖', '💕', '💗', '❤️', '💘', '💝'];
+
+    function spawnHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+        heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        container.appendChild(heart);
+
+        heart.addEventListener('animationend', () => heart.remove());
+    }
+
+    // Spawn hearts repeatedly
+    setInterval(spawnHeart, 400);
+
+    // Burst of hearts on start
+    for (let i = 0; i < 10; i++) {
+        setTimeout(spawnHeart, i * 100);
+    }
 }
