@@ -256,7 +256,7 @@ function startLoadingBar() {
         bar.style.width = '0%';
         percent.textContent = '💔';
         title.textContent = 'Just kidding.';
-        msg.textContent = 'Try again. 😏';
+        msg.textContent = 'Try again.';
     }, totalDelay + 2000);
 
     // Transition to Phase 4
