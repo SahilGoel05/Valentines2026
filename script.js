@@ -180,7 +180,7 @@ function submitCaptcha() {
 
     if (allCorrectSelected && !anyWrongSelected) {
         // Correct!
-        msgEl.textContent = 'Finally!!!!';
+        msgEl.textContent = 'Took you long enough...';
         msgEl.style.color = '#FF6B8A';
         setTimeout(() => {
             phase = 3;
