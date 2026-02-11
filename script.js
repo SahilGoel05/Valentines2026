@@ -83,7 +83,7 @@ function dismissModal() {
 
 // === Utilities ===
 function updateCounter() {
-    counterEl.textContent = `Rejection Attempts: ${rejectionCount} 😔`;
+    counterEl.textContent = `Rejection Attempts: ${rejectionCount}`;
     counterEl.style.display = '';
 }
 
@@ -262,7 +262,7 @@ function startLoadingBar() {
     // Transition to Phase 4
     setTimeout(() => {
         phase = 4;
-        subtitleEl.textContent = '💖';
+        subtitleEl.innerHTML = '<img id="hero-image" src="images/hero.jpg" alt="Us" class="hero-image">';
         showPhase('question');
     }, totalDelay + 4000);
 }
