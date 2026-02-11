@@ -1,0 +1,116 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF5F5;
+    color: #4A3040;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* === Layout === */
+.container {
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    padding: 2rem;
+}
+
+/* === Phase visibility === */
+.phase {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.phase.active {
+    display: block;
+    opacity: 1;
+}
+
+/* === Typography === */
+h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #4A3040;
+}
+
+h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4A3040;
+}
+
+#subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    min-height: 1.5em;
+}
+
+/* === Buttons === */
+.buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#btn-yes, #btn-no {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #FF6B8A;
+}
+
+#btn-yes {
+    background-color: #FF6B8A;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 138, 0.3);
+}
+
+#btn-yes:hover {
+    background-color: #E8456B;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 138, 0.4);
+}
+
+#btn-no {
+    background-color: white;
+    color: #FF6B8A;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+#btn-no:hover {
+    background-color: #FFF0F3;
+    transform: scale(1.05);
+}
+
+/* === Rejection Counter === */
+#rejection-counter {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: #FF8FA3;
+    background: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+}
