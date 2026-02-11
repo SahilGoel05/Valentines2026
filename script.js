@@ -23,7 +23,7 @@ function handleYes() {
     counterEl.style.display = 'none';
     // Show rejection note
     document.getElementById('rejection-note').innerHTML =
-        `Rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} tho???? <img src="images/rejection_celebration.jpg" alt="" class="celebration-inline-img">`;
+        `Rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} tho???? Fuck u <img src="images/rejection_celebration.jpg" alt="" class="celebration-inline-img">`;
 }
 
 function handleNo() {
