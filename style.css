@@ -105,8 +105,9 @@ h2 {
 /* === Rejection Counter === */
 #rejection-counter {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     color: #FF8FA3;
@@ -454,6 +455,16 @@ h2 {
 @keyframes celebrateFadeIn {
     0% { opacity: 0; transform: translateY(15px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+
+.celebration-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 2rem;
+    animation: celebrateFadeIn 1s ease forwards;
+    animation-delay: 2s;
+    opacity: 0;
 }
 
 /* Floating hearts */

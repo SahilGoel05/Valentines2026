@@ -23,6 +23,9 @@ function handleYes() {
     startFloatingHearts();
     // Hide the rejection counter
     counterEl.style.display = 'none';
+    // Show rejection note
+    document.getElementById('rejection-note').textContent =
+        `You rejected me ${rejectionCount} time${rejectionCount !== 1 ? 's' : ''} though... Not cool 😤`;
 }
 
 function handleNo() {
