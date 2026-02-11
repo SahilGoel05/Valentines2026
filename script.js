@@ -83,7 +83,7 @@ function dismissModal() {
 
 // === Utilities ===
 function updateCounter() {
-    counterEl.textContent = `Rejection Attempts: ${rejectionCount}`;
+    counterEl.innerHTML = `Rejection Attempts: ${rejectionCount} <img src="images/rejection.jpg" alt="" class="counter-img">`;
     counterEl.style.display = '';
 }
 
@@ -106,10 +106,10 @@ function showPhase(phaseName) {
 const captchaImages = [
     { src: 'images/memory1.jpg', correct: true, label: 'Memory 1' },
     { src: 'images/memory2.jpg', correct: true, label: 'Memory 2' },
-    { src: 'images/memory3.jpg', correct: true, label: 'Memory 3' },
     { src: 'images/decoy1.jpg', correct: false, label: 'Decoy 1' },
     { src: 'images/decoy2.jpg', correct: false, label: 'Decoy 2' },
     { src: 'images/decoy3.jpg', correct: false, label: 'Decoy 3' },
+    { src: 'images/decoy4.jpg', correct: false, label: 'Decoy 4' },
 ];
 
 let selectedCaptcha = new Set();

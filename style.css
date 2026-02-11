@@ -135,6 +135,16 @@ h2 {
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.counter-img {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* === Phase 2: Captcha === */
