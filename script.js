@@ -4,9 +4,10 @@ let rejectionCount = 0;
 
 // === Phase 1: Guilt Trip Messages ===
 const guiltMessages = [
-    "Are you suuuure? 🥺",
-    "But I already started planning...",
-    "I was gonna wear the nice outfit...",
+    "Milo's gonna be so sad 🥺",
+    "Guess I'll have to jerk off alone in the hot tub...",
+    "Fine bitch I'll just ask Ashley instead",
+    "...",
 ];
 
 // === DOM References ===
@@ -39,11 +40,11 @@ function handlePhase1No() {
     rejectionCount++;
     updateCounter();
 
-    if (rejectionCount <= 3) {
+    if (rejectionCount <= 4) {
         subtitleEl.textContent = guiltMessages[rejectionCount - 1];
     }
 
-    if (rejectionCount === 3) {
+    if (rejectionCount === 4) {
         setTimeout(() => {
             phase = 2;
             showPhase('captcha');
