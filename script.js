@@ -4,7 +4,7 @@ let rejectionCount = 0;
 
 // === Phase 1: Guilt Trip Messages ===
 const guiltMessages = [
-    "Milo's gonna be so sad 🥺",
+    "But Milo's gonna be so sad 🥺",
     "Guess I'll have to jerk off alone in the hot tub...",
     "Fine bitch I'll just ask Ashley instead",
     "...",
@@ -228,12 +228,12 @@ function startLoadingBar() {
     bar.style.width = '0%';
     percent.textContent = '0%';
     msg.textContent = '';
-    title.textContent = 'Processing your response...';
+    title.textContent = 'Seeing how much you hate me...';
 
     const steps = [
-        { width: 40, delay: 1000, text: 'Analyzing feelings...' },
-        { width: 82, delay: 1500, text: 'Consulting the heart committee...' },
-        { width: 99, delay: 2000, text: 'Almost done...' },
+        { width: 40, delay: 1000, text: 'Analyzing nudes...' },
+        { width: 82, delay: 1500, text: 'Finding a new girlfriend...' },
+        { width: 99, delay: 2000, text: 'Draining my wallet...' },
     ];
 
     let totalDelay = 500; // initial pause
@@ -256,8 +256,8 @@ function startLoadingBar() {
     setTimeout(() => {
         bar.style.width = '0%';
         percent.textContent = '💔';
-        title.textContent = 'Just kidding.';
-        msg.innerHTML = 'Try again. <img src="images/tryagain.jpg" alt="" class="loading-inline-img">';
+        title.innerHTML = 'Just kidding. <img src="images/tryagain.jpg" alt="" class="loading-inline-img">';
+        msg.textContent = 'Try again.';
     }, totalDelay + 2000);
 
     // Transition to Phase 4
